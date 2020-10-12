@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "74471857035",
+    "firebase_url": "https://gpurchaser-a94cd.firebaseio.com",
+    "project_id": "gpurchaser-a94cd",
+    "storage_bucket": "gpurchaser-a94cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74471857035:android:2600408888c6e30942ad8e",
+        "android_client_info": {
+          "package_name": "com.example.gratepurchaser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "74471857035-88tc9k0u3htr77bftujo7t65t1r6m7qt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gratepurchaser",
+            "certificate_hash": "273aeae82a352af7f4180df306915a9c8b8a76e7"
+          }
+        },
+        {
+          "client_id": "74471857035-lnrbj5p477hf1n55obsh9m4oo1dgbrne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1hzBJEEjn6nZQKO_wgWM7H8U_KHuCJPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "74471857035-lnrbj5p477hf1n55obsh9m4oo1dgbrne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
