@@ -60,8 +60,15 @@ class H {
         var aryValue : List<Pair<String, List<String>>> = ArrayList()
         var resultList : List<String> = listOf()
 
+        var keyValue : String = ""
+
 
         var aryPid : ArrayList<String> = ArrayList()
         var aryVid : ArrayList<String> = ArrayList()
+        var arypvid : ArrayList<String> = ArrayList()
+        var aryPVid : List<Pair<String,String>>? = null
+        var aryitem : List<Pair<String,String>>? = null
+        var chkPVid : ArrayList<String> = ArrayList()
+        var chkValue : ArrayList<String> = ArrayList()
     }
 }

@@ -2,11 +2,9 @@ package com.example.gratepurchaser.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gratepurchaser.R
 import com.example.gratepurchaser.activity.ItemDetailActivity
@@ -34,8 +32,7 @@ class AlbumAdapter(val context: Context, val albums: List<Image>): RecyclerView.
 
         holder.itemView.setOnClickListener {
             // when i click image , it go to next activity (* notice -> go activity form adapter)
-            val intent = Intent(holder.itemView.context, ItemDetailActivity::class.java)
-            //listener?.onClick(AlbumsData)
+        //    val intent = Intent(holder.itemView.context, ItemDetailActivity::class.java)
 
             //get album data and store in H ,to set ItemDetailActivity
             H.item_d_album_title = album.title
@@ -43,7 +40,6 @@ class AlbumAdapter(val context: Context, val albums: List<Image>): RecyclerView.
             H.item_d_album_image = album.thumbnailUrl
 
             //this is for ItemDetailActivity's detail data change
-//            G().doGet("566279369923")
             context.startActivity<ItemDetailActivity>()
         }
     }

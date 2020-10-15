@@ -30,15 +30,17 @@ class CustomDetailAdapter (val context: Context, val allCategory: ArrayList<Stri
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         holder.itemView.txt_property_name.text = H.arrayPtrueName[position]
 
+
         for (x in 0..H.aryValue.size-1){
 
             when(H.arrayPtrueName[position]){
                 H.aryValue[x].first -> {
+                    H.keyValue = H.aryValue[x].first
                     val result = H.aryValue[x].second
+                    Log.d("hello","before adapter :$result}")
                     H.resultList = result
                     detailCatRecycler(holder.itemView.detail_main_recycler,H.resultList)
                 }
-              //  else -> Toast.makeText(context, "property name is neither", Toast.LENGTH_SHORT).show()
             }
         }
     }

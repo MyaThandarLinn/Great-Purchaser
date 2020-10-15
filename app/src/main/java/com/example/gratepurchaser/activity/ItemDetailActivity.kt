@@ -14,6 +14,7 @@ import com.example.gratepurchaser.adapter.CustomMainAdapter
 import com.example.gratepurchaser.adapter.ItemSliderAdapter
 import com.example.gratepurchaser.libby.H
 import com.example.gratepurchaser.model.AttributesModel
+import com.example.gratepurchaser.model.PVIdModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
 import com.loopj.android.http.AsyncHttpClient
@@ -25,11 +26,18 @@ import kotlinx.android.synthetic.main.album_detail_activity.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import org.json.JSONObject
-import java.lang.reflect.InvocationTargetException
-import java.util.stream.Collectors
 
 class ItemDetailActivity : AppCompatActivity() {
-    var items : ArrayList<String> = ArrayList()
+    var items : List<PVIdModel> = listOf()
+    var itemArray : List<PVIdModel> = listOf()
+    var item_d : ArrayList<String> = ArrayList()
+    var itemList : ArrayList<String> = ArrayList()
+    var idArray : ArrayList<String> = ArrayList()
+    var array = arrayOf<String>()
+    var arList : ArrayList<String> = ArrayList()
+    var index = 0
+    var twoArray : ArrayList<MutableList<String>>? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +46,7 @@ class ItemDetailActivity : AppCompatActivity() {
 
         asyncFun("623691062113")
         attributeFun("623691062113")
+        idCheck("623691062113")
         // 587882128315, 556829583297, 521658905219, 566279369923 // 623691062113 //616403057490
 
         item_detail_cardView.setOnClickListener {
@@ -59,41 +68,6 @@ class ItemDetailActivity : AppCompatActivity() {
         btn_item_search.setOnClickListener {
             onDataChange()
         }
-
-        item_detail_copy_link.setOnClickListener {
-            doAsync {
-                var url = H.baseUrl + "623691062113"
-
-                uiThread {
-                    val client: AsyncHttpClient = AsyncHttpClient()
-
-                    client.get(url,object : JsonHttpResponseHandler(){
-                        override fun onSuccess(
-                            statusCode: Int,
-                            headers: Array<out Header>?,
-                            response: JSONObject?
-                        ) {
-                            super.onSuccess(statusCode, headers, response)
-                            var c =
-                                response!!.getJSONObject("OtapiItemFullInfo").getJSONArray("ConfiguredItems")
-                                    .length() - 1
-
-                            //for image slider
-                            for (i in 0..c) {
-                                items.add(
-                                    i,
-                                    (response!!.getJSONObject("OtapiItemFullInfo")
-                                        .getJSONArray("ConfiguredItems").getJSONObject(i)
-                                        .getString("Configurators")))
-                            }
-
-                            Log.d("hello","configuredItems : ${items.size} : $items")
-                        }
-                    })
-                }
-
-            }
-        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -102,16 +76,12 @@ class ItemDetailActivity : AppCompatActivity() {
     }
 
     private fun onDataChange() {
-//        item_detail_image.adapter = null
         slide_progress.visibility = View.VISIBLE
 
         doAsync {
             var searchId = search_url.text
-            //   var url = H.baseUrl + searchId
 
             var sUrl = H.baseURL+searchId+H.tailURL
-
-            Log.d("hello","sURL $sUrl")
 
             uiThread {
                 val client: AsyncHttpClient = AsyncHttpClient()
@@ -126,8 +96,7 @@ class ItemDetailActivity : AppCompatActivity() {
                         var cnt = response!!.getJSONObject("Result").getJSONObject("Items").getJSONArray("Content").length()-1
 
                         for (j in 0..cnt){
-                            var sResponseId = (response!!.getJSONObject("Result").getJSONObject("Items").getJSONArray("Content").getJSONObject(j).getString("Id"))
-                            Log.d("hello","sResponse : $sResponseId")
+                            var sResponseId = (response.getJSONObject("Result").getJSONObject("Items").getJSONArray("Content").getJSONObject(j).getString("Id"))
                             H.searchId = sResponseId
                         }
                         asyncFun(H.searchId.toString())
@@ -161,21 +130,21 @@ class ItemDetailActivity : AppCompatActivity() {
                                     .toString()
 
                             H.item_d_title =
-                                response!!.getJSONObject("OtapiItemFullInfo").get("Title").toString()
+                                response.getJSONObject("OtapiItemFullInfo").get("Title").toString()
 
                             H.item_d_price =
-                                response!!.getJSONObject("OtapiItemFullInfo").getJSONObject("Price")
+                                response.getJSONObject("OtapiItemFullInfo").getJSONObject("Price")
                                     .get("OriginalPrice").toString()
 
                             var count =
-                                response!!.getJSONObject("OtapiItemFullInfo").getJSONArray("Pictures")
+                                response.getJSONObject("OtapiItemFullInfo").getJSONArray("Pictures")
                                     .length() - 1
 
                             //for image slider
                             for (i in 0..count) {
                                 imageArray.add(
                                     i,
-                                    (response!!.getJSONObject("OtapiItemFullInfo")
+                                    (response.getJSONObject("OtapiItemFullInfo")
                                         .getJSONArray("Pictures").getJSONObject(i)
                                         .getJSONObject("Medium").getString("Url"))
                                 )
@@ -227,6 +196,7 @@ class ItemDetailActivity : AppCompatActivity() {
 
         var pidArray : ArrayList<String> = ArrayList() //Pid
         var pidTrueArray : ArrayList<String> = ArrayList()
+        var pvid : ArrayList<String> = ArrayList()
 
         doAsync {
 
@@ -259,20 +229,20 @@ class ItemDetailActivity : AppCompatActivity() {
                         for (i in 0..H.attributeList!!.size - 1) {
                             pnameArray.add(
                                 i,
-                                (response!!.getJSONObject("OtapiItemFullInfo")
+                                (response.getJSONObject("OtapiItemFullInfo")
                                     .getJSONArray("Attributes").getJSONObject(i)
                                     .getString("PropertyName"))
                             )
 
                             // get value for vid
                             vidArray.add(i,
-                                (response!!.getJSONObject("OtapiItemFullInfo")
+                                (response.getJSONObject("OtapiItemFullInfo")
                                     .getJSONArray("Attributes").getJSONObject(i)
                                     .getString("Vid")))
 
                             // get value for pid
                             pidArray.add(i,
-                                (response!!.getJSONObject("OtapiItemFullInfo")
+                                (response.getJSONObject("OtapiItemFullInfo")
                                     .getJSONArray("Attributes").getJSONObject(i)
                                     .getString("Pid")))
 
@@ -293,6 +263,16 @@ class ItemDetailActivity : AppCompatActivity() {
                         H.aryPid = pidArray
                         H.aryVid = vidArray
 
+                        // this is for pid , vid plus array
+                        for(d in 0..pidArray.size-1){
+                           pvid.add(pidArray[d].plus(vidArray[d]))
+                        }
+
+                        H.arypvid = pvid
+
+//                        var pvId = pidArray.zip(vidArray)
+//                        H.aryPVid = pvId
+
                         uniqueArray(pTrueNameArray)
 
                         val attributelist = H.attributeList!!.filter { s-> s.IsConfigurator == "true" }
@@ -306,14 +286,10 @@ class ItemDetailActivity : AppCompatActivity() {
                             value.add(attributelist[a].Value)
                         }
 
-                        Log.d("hello","value : ${value.size}")
-
                         // need
                         val valueZip = pTrueNameArray.zip(value)
                         val valueGp = valueZip.groupBy ( {it.first},{it.second} ).toList()
                         H.aryValue = valueGp
-
-
 
                         val recyAdapter = CustomMainAdapter(applicationContext, H.arrayPtrueName)
                         main_recycler.adapter = recyAdapter
@@ -337,5 +313,97 @@ class ItemDetailActivity : AppCompatActivity() {
         }
 
         H.arrayPtrueName = uniquePinyinArrayList
+    }
+
+    private fun idCheck(id : String){
+
+            doAsync {
+//                var url = H.baseUrl + "623691062113"
+                var url = H.baseUrl + id
+
+                uiThread {
+                    val client: AsyncHttpClient = AsyncHttpClient()
+
+                    client.get(url,object : JsonHttpResponseHandler(){
+                        override fun onSuccess(
+                            statusCode: Int,
+                            headers: Array<out Header>?,
+                            response: JSONObject?
+                        ) {
+                            super.onSuccess(statusCode, headers, response)
+                            var c =
+                                response!!.getJSONObject("OtapiItemFullInfo").getJSONArray("ConfiguredItems")
+                                    .length() - 1
+
+                            for (i in 0..c) {
+
+                                var confItems =
+                                    response.getJSONObject("OtapiItemFullInfo")
+                                        .getJSONArray("ConfiguredItems").getJSONObject(i)
+                                        .getString("Configurators")
+
+                                var id = response.getJSONObject("OtapiItemFullInfo")
+                                    .getJSONArray("ConfiguredItems").getJSONObject(i)
+                                    .getString("Id")
+
+
+
+                                idArray.add(id)
+
+                                items = Gson().fromJson(
+                                    confItems.toString(),
+                                    Array<PVIdModel>::class.java
+                                ).toList()
+
+                                var itemValue = ArrayList<String>(items.size)
+
+                                for(a in 0..items.size-1){
+//                                    var pid = items[a].Pid
+//                                    var vid = items[a].Vid
+
+                                  itemValue.add(items[a].Pid+items[a].Vid)
+//                                    itemValue[a] = items[a].Pid+items[a].Vid
+                                }
+                                Log.d("hello","itemValue : ${itemValue.size} : ${itemValue}")
+
+////                                twoArray.addAll(itemValue)
+//                                twoArray!!.add(listOf("1","22","33","44","55"))
+
+
+//                                itemValue = emptyArray()
+
+                                index = + 1
+
+//                                var c = 0
+//                                var div = items.size.div(idArray.size)
+
+//                                for (v in 0..itemValue.size-1){
+//                                    if(c < div){
+//                                        arList.add(itemValue[v])
+//                                        c++
+//                                        if (c.equals(div)){
+//                                            c = 0
+//                                        }
+//                                    }
+//                                }
+                            }
+
+
+//                            for (y in 0..itemValue.size-1){
+//                                Log.d("hello","hi : ${itemValue[y]}")
+//                                for(z in 0..3){
+//                                  //  array = arrayOf(itemValue[y])
+//                                    Log.d("hello","hello : ${itemValue[y]}")
+//                                }
+//                            }
+
+                        //    H.aryitem = idArray.zip(itemValue)
+//
+//                            Log.d("hello", "item array id : ${H.aryitem}")
+//                            Log.d("hello", "item id : $idArray")
+                        }
+                    })
+                }
+            }
     }
 }
