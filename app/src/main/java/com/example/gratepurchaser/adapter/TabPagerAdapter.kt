@@ -13,15 +13,15 @@ class TabPagerAdapter(fm: FragmentManager, private var tabCount: Int) :
 
     override fun getItem(position: Int): Fragment {
 
-        when (position) {
-            0 -> return WomenFragment()
-            1 -> return FavouriteFragment()
-            2 -> return WomenFragment()
-            3 -> return FavouriteFragment()
-            4 -> return WomenFragment()
-            5 -> return FavouriteFragment()
-            6 -> return WomenFragment()
-            else -> return AccountFragment()
+        return when (position) {
+            0 -> WomenFragment()
+            1 -> FavouriteFragment()
+            2 -> WomenFragment()
+            3 -> FavouriteFragment()
+            4 -> WomenFragment()
+            5 -> FavouriteFragment()
+            6 -> WomenFragment()
+            else -> AccountFragment()
         }
     }
 

@@ -186,7 +186,7 @@ class ItemDetailActivity : AppCompatActivity() {
         }
     }
 
-    fun attributeFun(attid: String) {
+    fun attributeFun(attId: String) {
 
         var pnameArray: ArrayList<String> = ArrayList() //PropertyName
         var pTrueNameArray: ArrayList<String> = ArrayList()
@@ -200,7 +200,7 @@ class ItemDetailActivity : AppCompatActivity() {
 
         doAsync {
 
-            var attUrl = H.baseUrl + attid
+            var attUrl = H.baseUrl + attId
             var num = 0 //to add property name in array where configure is true
             var pCount = 0 //for all property name , configure is true
 
@@ -226,7 +226,7 @@ class ItemDetailActivity : AppCompatActivity() {
                         ).toList()
 
                         // for propterty name array // need
-                        for (i in 0..H.attributeList!!.size - 1) {
+                        for (i in H.attributeList!!.indices) {
                             pnameArray.add(
                                 i,
                                 (response.getJSONObject("OtapiItemFullInfo")
@@ -247,7 +247,7 @@ class ItemDetailActivity : AppCompatActivity() {
                                     .getString("Pid")))
 
 
-                            if (H.attributeList!![i].IsConfigurator.equals("true")) {
+                            if (H.attributeList!![i].IsConfigurator == "true") {
                                 pCount++
 
                                 if (num < pCount) {
@@ -264,14 +264,33 @@ class ItemDetailActivity : AppCompatActivity() {
                         H.aryVid = vidArray
 
                         // this is for pid , vid plus array
-                        for(d in 0..pidArray.size-1){
+                        for(d in pidArray.indices){
                            pvid.add(pidArray[d].plus(vidArray[d]))
                         }
-
                         H.arypvid = pvid
+
+                        //test // for group name and id
+                        var nameIdgp = pTrueNameArray.zip(pvid)
+                        H.aryNameId = nameIdgp
+
+
 
 //                        var pvId = pidArray.zip(vidArray)
 //                        H.aryPVid = pvId
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         uniqueArray(pTrueNameArray)
 
@@ -364,7 +383,6 @@ class ItemDetailActivity : AppCompatActivity() {
                                   itemValue.add(items[a].Pid+items[a].Vid)
 //                                    itemValue[a] = items[a].Pid+items[a].Vid
                                 }
-                                Log.d("hello","itemValue : ${itemValue.size} : ${itemValue}")
 
 ////                                twoArray.addAll(itemValue)
 //                                twoArray!!.add(listOf("1","22","33","44","55"))
@@ -390,17 +408,12 @@ class ItemDetailActivity : AppCompatActivity() {
 
 
 //                            for (y in 0..itemValue.size-1){
-//                                Log.d("hello","hi : ${itemValue[y]}")
 //                                for(z in 0..3){
 //                                  //  array = arrayOf(itemValue[y])
-//                                    Log.d("hello","hello : ${itemValue[y]}")
 //                                }
 //                            }
 
                         //    H.aryitem = idArray.zip(itemValue)
-//
-//                            Log.d("hello", "item array id : ${H.aryitem}")
-//                            Log.d("hello", "item id : $idArray")
                         }
                     })
                 }

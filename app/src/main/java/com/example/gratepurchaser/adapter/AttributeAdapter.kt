@@ -9,7 +9,7 @@ import com.example.gratepurchaser.R
 import com.example.gratepurchaser.model.AttributesModel
 import kotlinx.android.synthetic.main.recycler_row.view.*
 
-class AttributeAdapter (val context: Context, val lists: List<AttributesModel>) :
+class AttributeAdapter (val context: Context, private val lists: List<AttributesModel>) :
     RecyclerView.Adapter<AttributeAdapter.ViewHolder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(context).inflate(R.layout.recycler_row, p0, false)
@@ -20,8 +20,6 @@ class AttributeAdapter (val context: Context, val lists: List<AttributesModel>) 
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         val sm = lists[p1]
-
-      //  p0.itemView.property_name.text = sm.PropertyName
 
         when (sm.IsConfigurator) {
             "true" -> p0.itemView.property_name.text = sm.PropertyName

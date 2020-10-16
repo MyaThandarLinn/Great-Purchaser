@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.gratepurchaser.R
-import com.example.gratepurchaser.adapter.AlbumAdapter
 import com.example.gratepurchaser.adapter.WomenFragmentAdapter
-import com.example.gratepurchaser.model.WomenFragentModel
+import com.example.gratepurchaser.model.WomenModel
 import kotlinx.android.synthetic.main.fragment_women.*
 
 class WomenFragment : Fragment() {
@@ -38,16 +36,16 @@ class WomenFragment : Fragment() {
         women_fragment_recycler.adapter = adapter
     }
 
-    fun setDataInitList(): ArrayList<WomenFragentModel>{
-       var items : ArrayList<WomenFragentModel> = ArrayList()
+    private fun setDataInitList(): ArrayList<WomenModel>{
+       var items : ArrayList<WomenModel> = ArrayList()
 
-        items.add(WomenFragentModel(R.drawable.ic_account_balance,"Account"))
-        items.add(WomenFragentModel(R.drawable.ic_baseline_category_24,"Category"))
-        items.add(WomenFragentModel(R.drawable.ic_baseline_favorite,"Favourite"))
-        items.add(WomenFragentModel(R.drawable.ic_baseline_home,"Home"))
-        items.add(WomenFragentModel(R.drawable.ic_baseline_message,"Message"))
-        items.add(WomenFragentModel(R.drawable.ic_baseline_share,"Share"))
-        items.add(WomenFragentModel(R.drawable.ic_baseline_shopping_cart,"Shopping"))
+        items.add(WomenModel(R.drawable.ic_account_balance,"Account"))
+        items.add(WomenModel(R.drawable.ic_baseline_category_24,"Category"))
+        items.add(WomenModel(R.drawable.ic_baseline_favorite,"Favourite"))
+        items.add(WomenModel(R.drawable.ic_baseline_home,"Home"))
+        items.add(WomenModel(R.drawable.ic_baseline_message,"Message"))
+        items.add(WomenModel(R.drawable.ic_baseline_share,"Share"))
+        items.add(WomenModel(R.drawable.ic_baseline_shopping_cart,"Shopping"))
 
         return items
     }

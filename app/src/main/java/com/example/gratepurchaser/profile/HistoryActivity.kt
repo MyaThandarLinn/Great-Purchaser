@@ -6,11 +6,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gratepurchaser.R
 import com.example.gratepurchaser.adapter.HistoryAdapter
-import com.example.gratepurchaser.adapter.WomenFragmentAdapter
 import com.example.gratepurchaser.model.HistoryModel
-import com.example.gratepurchaser.model.WomenFragentModel
 import kotlinx.android.synthetic.main.activity_history.*
-import kotlinx.android.synthetic.main.fragment_women.*
 
 class HistoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +24,7 @@ class HistoryActivity : AppCompatActivity() {
         history_recyclerView.adapter = adapter
     }
 
-    fun setDataInitList(): ArrayList<HistoryModel>{
+    private fun setDataInitList(): ArrayList<HistoryModel>{
         var items : ArrayList<HistoryModel> = ArrayList()
 
         items.add(HistoryModel(120000,150000,5000,"hello","9.23"))

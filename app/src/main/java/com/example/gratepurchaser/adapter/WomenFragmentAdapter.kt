@@ -9,9 +9,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gratepurchaser.R
-import com.example.gratepurchaser.model.WomenFragentModel
+import com.example.gratepurchaser.model.WomenModel
 
-class WomenFragmentAdapter(var context: Context, var arrayList: ArrayList<WomenFragentModel>)
+class WomenFragmentAdapter(var context: Context, var arrayList: ArrayList<WomenModel>)
     :RecyclerView.Adapter<WomenFragmentAdapter.ItemHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
@@ -31,7 +31,6 @@ class WomenFragmentAdapter(var context: Context, var arrayList: ArrayList<WomenF
         holder.title.setOnClickListener {
             Toast.makeText(context, "hello title", Toast.LENGTH_SHORT).show()
         }
-
     }
 
     class ItemHolder(itemView : View): RecyclerView.ViewHolder(itemView){

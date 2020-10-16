@@ -43,5 +43,4 @@ class AccountFragment : Fragment() {
             startActivity(Intent(view.context, WarehouseActivity::class.java))
         }
     }
-
 }

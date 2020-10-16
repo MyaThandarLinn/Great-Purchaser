@@ -22,17 +22,33 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/PC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/PC.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/SignInActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/SignInActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/activity/ItemDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/activity/ItemDetailActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/AlbumAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/AlbumAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/AttributeAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/AttributeAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/CustomAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/CustomAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/CustomDetailAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/CustomDetailAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/CustomItemDetailAdapter.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/CustomMainAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/CustomMainAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/DetailAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/DetailAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/FViewPageAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/FViewPageAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/ItemRecyclerAdapter.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/ItemSliderAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/ItemSliderAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/TabPagerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/TabPagerAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/WomenFragmentAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/WomenFragmentAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/fragment/AccountFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/fragment/AccountFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/fragment/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/fragment/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/fragment/WomenFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/fragment/WomenFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/libby/H.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/libby/H.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/model/AllCategory.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/model/CategoryItem.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/model/ColorModel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/model/DataModel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/model/Slide.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/model/WomenFragentModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/model/WomenModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/profile/HistoryActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/profile/HistoryActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -316,30 +332,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="258" key="AndroidCreateResourceFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600417155957" />
-    <state x="640" y="158" key="FileChooserDialogImpl" timestamp="1602735339083">
+    <state x="640" y="158" key="FileChooserDialogImpl" timestamp="1602744449688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="640" y="158" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602735339083" />
+    <state x="640" y="158" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602744449688" />
     <state x="761" y="363" key="Github.ShareDialog" timestamp="1601095149191">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="761" y="363" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601095149191" />
-    <state width="1851" height="491" key="GridCell.Tab.0.bottom" timestamp="1602739759537">
+    <state width="1851" height="515" key="GridCell.Tab.0.bottom" timestamp="1602757709580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1851" height="491" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602739759537" />
-    <state width="1851" height="491" key="GridCell.Tab.0.center" timestamp="1602739759537">
+    <state width="1851" height="515" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602757709580" />
+    <state width="1851" height="515" key="GridCell.Tab.0.center" timestamp="1602757709580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1851" height="491" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602739759537" />
-    <state width="1851" height="491" key="GridCell.Tab.0.left" timestamp="1602739759536">
+    <state width="1851" height="515" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602757709580" />
+    <state width="1851" height="515" key="GridCell.Tab.0.left" timestamp="1602757709580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1851" height="491" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602739759536" />
-    <state width="1851" height="491" key="GridCell.Tab.0.right" timestamp="1602739759537">
+    <state width="1851" height="515" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602757709580" />
+    <state width="1851" height="515" key="GridCell.Tab.0.right" timestamp="1602757709580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1851" height="491" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602739759537" />
+    <state width="1851" height="515" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602757709580" />
     <state x="221" y="0" key="SettingsEditor" timestamp="1602211227408">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -348,10 +364,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602213444003" />
-    <state x="506" y="258" key="com.intellij.ide.util.TipDialog" timestamp="1602739615746">
+    <state x="506" y="258" key="com.intellij.ide.util.TipDialog" timestamp="1602743544534">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="506" y="258" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602739615746" />
+    <state x="506" y="258" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602743544534" />
     <state x="420" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600248274869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

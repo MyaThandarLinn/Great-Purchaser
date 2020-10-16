@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.color_detail_item.view.*
 import kotlinx.android.synthetic.main.detail_cat_value_row.view.*
 import kotlinx.android.synthetic.main.size_detail_item.view.*
 
-class CustomMainAdapter (val context: Context, val allCategory: ArrayList<String>)
+class CustomMainAdapter (val context: Context, private val allCategory: ArrayList<String>)
     : RecyclerView.Adapter<CustomMainAdapter.MainViewHolder>() {
 
     class MainViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
@@ -31,7 +31,7 @@ class CustomMainAdapter (val context: Context, val allCategory: ArrayList<String
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         holder.itemView.txt_name.text = H.arrayPtrueName[position]
 
-        for (x in 0..H.aryValue.size-1){
+        for (x in H.aryValue.indices){
 
             when(H.arrayPtrueName[position]){
                 H.aryValue[x].first -> {
@@ -44,7 +44,7 @@ class CustomMainAdapter (val context: Context, val allCategory: ArrayList<String
         }
     }
 
-    fun detailCatRecycler(recyclerView: RecyclerView, customItem: List<String>){
+    private fun detailCatRecycler(recyclerView: RecyclerView, customItem: List<String>){
         val itemAdapter = CustomAdapter(context, customItem)
         recyclerView.adapter = itemAdapter
         recyclerView.layoutManager = GridLayoutManager(context,2, LinearLayoutManager.VERTICAL,false)

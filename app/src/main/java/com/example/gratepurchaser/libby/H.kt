@@ -1,6 +1,5 @@
 package com.example.gratepurchaser.libby
 
-import com.example.gratepurchaser.model.AllCategory
 import com.example.gratepurchaser.model.AttributesModel
 import java.util.*
 import kotlin.collections.ArrayList
@@ -10,9 +9,9 @@ class H {
         var login_phone = ""
         var login_pass = ""
 
-        val baseUrl = "http://otapi.net/service-json/GetItemFullInfo?instanceKey=opendemo&language=en&itemId="
-        val baseURL = "http://otapi.net/service-json/SearchItemsFrame?instanceKey=opendemo&language=en&xmlParameters=%3CSearchItemsParameters%3E%3CProvider%3ETaobao%3C%2fProvider%3E%3CItemTitle%3E"
-        val tailURL = "%3C%2fItemTitle%3E%3C%2fSearchItemsParameters%3E&framePosition=0&frameSize=1"
+        const val baseUrl = "http://otapi.net/service-json/GetItemFullInfo?instanceKey=opendemo&language=en&itemId="
+        const val baseURL = "http://otapi.net/service-json/SearchItemsFrame?instanceKey=opendemo&language=en&xmlParameters=%3CSearchItemsParameters%3E%3CProvider%3ETaobao%3C%2fProvider%3E%3CItemTitle%3E"
+        const val tailURL = "%3C%2fItemTitle%3E%3C%2fSearchItemsParameters%3E&framePosition=0&frameSize=1"
 
         var searchId = ""
         // for ItemDetailActivity
@@ -69,6 +68,10 @@ class H {
         var aryPVid : List<Pair<String,String>>? = null
         var aryitem : List<Pair<String,String>>? = null
         var chkPVid : ArrayList<String> = ArrayList()
-        var chkValue : ArrayList<String> = ArrayList()
+        var chkValue : List<String> = listOf()
+
+        //for group of name and id [(body color, 16272077996777722), (body color, 16272077996777723),
+        var aryNameId : List<Pair<String,String>>? = null
+
     }
 }

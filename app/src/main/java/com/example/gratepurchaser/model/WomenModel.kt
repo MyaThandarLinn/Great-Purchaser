@@ -1,6 +1,6 @@
 package com.example.gratepurchaser.model
 
-class WomenFragentModel {
+class WomenModel {
     var iconChar: Int? = 0
     var titleChar : String? = null
 

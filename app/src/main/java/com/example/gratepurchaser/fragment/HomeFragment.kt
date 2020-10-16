@@ -32,9 +32,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // this is for cardView
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
-
-        return view
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -43,11 +41,11 @@ class HomeFragment : Fragment() {
 
         // this is for cardView
         doAsync {
-            val jsons = URL("https://jsonplaceholder.typicode.com/photos").readText()
+            val json = URL("https://jsonplaceholder.typicode.com/photos").readText()
 
 
             uiThread {
-                val albums = Gson().fromJson(jsons,Array<Image>::class.java).toList()
+                val albums = Gson().fromJson(json,Array<Image>::class.java).toList()
 
                 val layoutManager = GridLayoutManager(context,2) as RecyclerView.LayoutManager
                 item_recyclerView.layoutManager = layoutManager

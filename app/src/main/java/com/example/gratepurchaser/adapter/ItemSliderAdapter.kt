@@ -10,8 +10,8 @@ import com.example.gratepurchaser.libby.H
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_detail_image_slider.view.*
 
-class ItemSliderAdapter (val context: Context, val albums: ArrayList<String>): RecyclerView.Adapter<ItemSliderAdapter.ViewHolder>() {
-    class ViewHolder (itemview : View) : RecyclerView.ViewHolder(itemview)
+class ItemSliderAdapter (val context: Context, private val albums: ArrayList<String>): RecyclerView.Adapter<ItemSliderAdapter.ViewHolder>() {
+    class ViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_detail_image_slider,parent,false)

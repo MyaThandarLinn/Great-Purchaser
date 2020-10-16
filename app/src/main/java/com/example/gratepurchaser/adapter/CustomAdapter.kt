@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.detail_cat_value_row.view.*
 import kotlinx.android.synthetic.main.main_detail_row.view.*
 import kotlinx.android.synthetic.main.size_detail_item.view.*
 
-class CustomAdapter (val context: Context, val detailList: List<String>): RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
-    class ViewHolder (itemview : View) : RecyclerView.ViewHolder(itemview)
+class CustomAdapter (val context: Context, private val detailList: List<String>): RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+    class ViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.main_detail_row,parent,false)

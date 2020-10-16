@@ -20,7 +20,7 @@ class SignInActivity : AppCompatActivity() {
      // initialize firebase
         FirebaseApp.initializeApp(this)
 
-        //get firestore instance
+        //get Firebase Firestore instance
         val db = Firebase.firestore
 
         go_to_register.setOnClickListener {

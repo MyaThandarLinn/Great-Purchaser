@@ -15,7 +15,7 @@ import com.example.gratepurchaser.model.AttributesModel
 import kotlinx.android.synthetic.main.detail_cat_value_row.view.*
 import kotlinx.android.synthetic.main.size_detail_item.view.*
 
-class CustomDetailAdapter (val context: Context, val allCategory: ArrayList<String>)
+class CustomDetailAdapter (val context: Context, private val allCategory: ArrayList<String>)
     : RecyclerView.Adapter<CustomDetailAdapter.MainViewHolder>() {
 
     class MainViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
@@ -31,23 +31,25 @@ class CustomDetailAdapter (val context: Context, val allCategory: ArrayList<Stri
         holder.itemView.txt_property_name.text = H.arrayPtrueName[position]
 
 
-        for (x in 0..H.aryValue.size-1){
+        for (x in H.aryValue.indices){
 
             when(H.arrayPtrueName[position]){
                 H.aryValue[x].first -> {
                     H.keyValue = H.aryValue[x].first
                     val result = H.aryValue[x].second
-                    Log.d("hello","before adapter :$result}")
                     H.resultList = result
+                    H.chkValue = listOf(H.aryValue[x].first)
                     detailCatRecycler(holder.itemView.detail_main_recycler,H.resultList)
                 }
             }
         }
     }
 
-    fun detailCatRecycler(recyclerView: RecyclerView, customItem: List<String>){
+    private fun detailCatRecycler(recyclerView: RecyclerView, customItem: List<String>){
         val itemAdapter = DetailAdapter(context, customItem)
         recyclerView.adapter = itemAdapter
         recyclerView.layoutManager = GridLayoutManager(context,2, LinearLayoutManager.VERTICAL,false)
     }
 }
+
+
