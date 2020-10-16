@@ -36,4 +36,9 @@ class HomeActivity : AppCompatActivity() {
         home_tabs.getTabAt(3)!!.setIcon(R.drawable.ic_baseline_shopping_cart)
         home_tabs.getTabAt(4)!!.setIcon(R.drawable.ic_baseline_person)
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        moveTaskToBack(true)
+    }
 }

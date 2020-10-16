@@ -4,7 +4,7 @@
         <layer-list>
             <item>
                 <shape>
-                    <solid android:color="@color/button_enable_colour"/>
+                    <solid android:color="@color/colorPrimaryLight"/>
                     <corners android:radius="10dp"/>
                 </shape>
             </item>

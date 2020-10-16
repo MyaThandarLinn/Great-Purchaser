@@ -188,7 +188,7 @@ class ItemDetailActivity : AppCompatActivity() {
 
     fun attributeFun(attId: String) {
 
-        var pnameArray: ArrayList<String> = ArrayList() //PropertyName
+        var pNameArray: ArrayList<String> = ArrayList() //PropertyName
         var pTrueNameArray: ArrayList<String> = ArrayList()
 
         var vidArray : ArrayList<String> = ArrayList() //Vid
@@ -227,7 +227,7 @@ class ItemDetailActivity : AppCompatActivity() {
 
                         // for propterty name array // need
                         for (i in H.attributeList!!.indices) {
-                            pnameArray.add(
+                            pNameArray.add(
                                 i,
                                 (response.getJSONObject("OtapiItemFullInfo")
                                     .getJSONArray("Attributes").getJSONObject(i)
@@ -251,7 +251,7 @@ class ItemDetailActivity : AppCompatActivity() {
                                 pCount++
 
                                 if (num < pCount) {
-                                    pTrueNameArray.add(num, pnameArray[i]) // for propertyName true value
+                                    pTrueNameArray.add(num, pNameArray[i]) // for propertyName true value
                                     vidTrueArray.add(num,vidArray[i])  //for vid true value
                                     pidTrueArray.add(num,pidArray[i]) // for pid true value
 
@@ -301,7 +301,7 @@ class ItemDetailActivity : AppCompatActivity() {
                         H.arrayGpby = gpby
 
                         var value : ArrayList<String> = ArrayList()
-                        for(a in 0..attributelist.size-1){
+                        for(a in attributelist.indices){
                             value.add(attributelist[a].Value)
                         }
 
@@ -337,7 +337,6 @@ class ItemDetailActivity : AppCompatActivity() {
     private fun idCheck(id : String){
 
             doAsync {
-//                var url = H.baseUrl + "623691062113"
                 var url = H.baseUrl + id
 
                 uiThread {
@@ -365,55 +364,13 @@ class ItemDetailActivity : AppCompatActivity() {
                                     .getJSONArray("ConfiguredItems").getJSONObject(i)
                                     .getString("Id")
 
-
-
                                 idArray.add(id)
 
                                 items = Gson().fromJson(
                                     confItems.toString(),
                                     Array<PVIdModel>::class.java
                                 ).toList()
-
-                                var itemValue = ArrayList<String>(items.size)
-
-                                for(a in 0..items.size-1){
-//                                    var pid = items[a].Pid
-//                                    var vid = items[a].Vid
-
-                                  itemValue.add(items[a].Pid+items[a].Vid)
-//                                    itemValue[a] = items[a].Pid+items[a].Vid
-                                }
-
-////                                twoArray.addAll(itemValue)
-//                                twoArray!!.add(listOf("1","22","33","44","55"))
-
-
-//                                itemValue = emptyArray()
-
-                                index = + 1
-
-//                                var c = 0
-//                                var div = items.size.div(idArray.size)
-
-//                                for (v in 0..itemValue.size-1){
-//                                    if(c < div){
-//                                        arList.add(itemValue[v])
-//                                        c++
-//                                        if (c.equals(div)){
-//                                            c = 0
-//                                        }
-//                                    }
-//                                }
                             }
-
-
-//                            for (y in 0..itemValue.size-1){
-//                                for(z in 0..3){
-//                                  //  array = arrayOf(itemValue[y])
-//                                }
-//                            }
-
-                        //    H.aryitem = idArray.zip(itemValue)
                         }
                     })
                 }

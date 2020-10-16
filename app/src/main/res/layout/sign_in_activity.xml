@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -91,15 +92,12 @@
 
         <Button
             android:id="@+id/go_to_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/button_style_1"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="290dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/btn_rounded_primary"
             android:text="S I G N  I N"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
             android:textStyle="bold" />
 
         <TextView
@@ -145,6 +143,5 @@
             app:layout_constraintVertical_bias="0.819" />
 
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: org.michaelbel:bottomsheet:1.2.3@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/db6e382f0b8260c38a7c02e9488de338/jetified-bottomsheet-1.2.3/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a405a6ab31bd4157d8167cf201d7324f/jetified-bottomsheet-1.2.3/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/db6e382f0b8260c38a7c02e9488de338/jetified-bottomsheet-1.2.3/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/db6e382f0b8260c38a7c02e9488de338/jetified-bottomsheet-1.2.3/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/db6e382f0b8260c38a7c02e9488de338/jetified-bottomsheet-1.2.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a405a6ab31bd4157d8167cf201d7324f/jetified-bottomsheet-1.2.3/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a405a6ab31bd4157d8167cf201d7324f/jetified-bottomsheet-1.2.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a405a6ab31bd4157d8167cf201d7324f/jetified-bottomsheet-1.2.3/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.michaelbel/bottomsheet/1.2.3/1b7f0335fffc9e53f44962af14a44e343c56c6e2/bottomsheet-1.2.3-javadoc.jar!/" />
