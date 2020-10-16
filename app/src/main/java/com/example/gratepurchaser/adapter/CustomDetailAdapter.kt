@@ -1,19 +1,15 @@
 package com.example.gratepurchaser.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gratepurchaser.R
 import com.example.gratepurchaser.libby.H
-import com.example.gratepurchaser.model.AttributesModel
 import kotlinx.android.synthetic.main.detail_cat_value_row.view.*
-import kotlinx.android.synthetic.main.size_detail_item.view.*
 
 class CustomDetailAdapter (val context: Context, private val allCategory: ArrayList<String>)
     : RecyclerView.Adapter<CustomDetailAdapter.MainViewHolder>() {

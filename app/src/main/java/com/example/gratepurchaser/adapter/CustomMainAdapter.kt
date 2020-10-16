@@ -31,17 +31,23 @@ class CustomMainAdapter (val context: Context, private val allCategory: ArrayLis
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         holder.itemView.txt_name.text = H.arrayPtrueName[position]
 
-        for (x in H.aryValue.indices){
+        Log.d("hello","h pTrueNameArray position  ${H.arrayPtrueName[position]}")
+
+//        for (x in H.aryValue.indices){
 
             when(H.arrayPtrueName[position]){
-                H.aryValue[x].first -> {
-                    val result = H.aryValue[x].second
+                H.aryValue[position].first -> {
+
+                    Log.d("hello","h aryValue position first  ${H.aryValue[position].first}")
+
+                    val result = H.aryValue[position].second
                     H.resultList = result
                     detailCatRecycler(holder.itemView.main_recycler,H.resultList)
+
+                    Log.d("hello","h aryValue position : ${H.aryValue[position]}")
                 }
               //  else -> Toast.makeText(context, "property name is neither", Toast.LENGTH_SHORT).show() //do nothing
             }
-        }
     }
 
     private fun detailCatRecycler(recyclerView: RecyclerView, customItem: List<String>){

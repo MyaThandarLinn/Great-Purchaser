@@ -29,15 +29,7 @@ import org.json.JSONObject
 
 class ItemDetailActivity : AppCompatActivity() {
     var items : List<PVIdModel> = listOf()
-    var itemArray : List<PVIdModel> = listOf()
-    var item_d : ArrayList<String> = ArrayList()
-    var itemList : ArrayList<String> = ArrayList()
     var idArray : ArrayList<String> = ArrayList()
-    var array = arrayOf<String>()
-    var arList : ArrayList<String> = ArrayList()
-    var index = 0
-    var twoArray : ArrayList<MutableList<String>>? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -125,51 +117,51 @@ class ItemDetailActivity : AppCompatActivity() {
                         super.onSuccess(statusCode, headers, response)
                         Log.d("hello", "-- on Success --")
 
-                            H.item_d_image =
-                                response!!.getJSONObject("OtapiItemFullInfo").get("MainPictureUrl")
-                                    .toString()
+                        H.item_d_image =
+                            response!!.getJSONObject("OtapiItemFullInfo").get("MainPictureUrl")
+                                .toString()
 
-                            H.item_d_title =
-                                response.getJSONObject("OtapiItemFullInfo").get("Title").toString()
+                        H.item_d_title =
+                            response.getJSONObject("OtapiItemFullInfo").get("Title").toString()
 
-                            H.item_d_price =
-                                response.getJSONObject("OtapiItemFullInfo").getJSONObject("Price")
-                                    .get("OriginalPrice").toString()
+                        H.item_d_price =
+                            response.getJSONObject("OtapiItemFullInfo").getJSONObject("Price")
+                                .get("OriginalPrice").toString()
 
-                            var count =
-                                response.getJSONObject("OtapiItemFullInfo").getJSONArray("Pictures")
-                                    .length() - 1
+                        var count =
+                            response.getJSONObject("OtapiItemFullInfo").getJSONArray("Pictures")
+                                .length() - 1
 
-                            //for image slider
-                            for (i in 0..count) {
-                                imageArray.add(
-                                    i,
-                                    (response.getJSONObject("OtapiItemFullInfo")
-                                        .getJSONArray("Pictures").getJSONObject(i)
-                                        .getJSONObject("Medium").getString("Url"))
-                                )
-                            }
+                        //for image slider
+                        for (i in 0..count) {
+                            imageArray.add(
+                                i,
+                                (response.getJSONObject("OtapiItemFullInfo")
+                                    .getJSONArray("Pictures").getJSONObject(i)
+                                    .getJSONObject("Medium").getString("Url"))
+                            )
+                        }
 
-                            if (H.image_slider.isEmpty()) {
-                                H.image_slider = imageArray
+                        if (H.image_slider.isEmpty()) {
+                            H.image_slider = imageArray
 
-                                item_title.text = H.item_d_title
-                                item_price.text = H.item_d_price
-                                item_detail_image.adapter =
-                                    ItemSliderAdapter(applicationContext, H.image_slider)
-                                slide_progress.visibility = View.GONE
-                            }
+                            item_title.text = H.item_d_title
+                            item_price.text = H.item_d_price
+                            item_detail_image.adapter =
+                                ItemSliderAdapter(applicationContext, H.image_slider)
+                            slide_progress.visibility = View.GONE
+                        }
 
-                            else {
-                                H.image_slider.clear()
-                                H.image_slider = imageArray
+                        else {
+                            H.image_slider.clear()
+                            H.image_slider = imageArray
 
-                                item_title.text = H.item_d_title
-                                item_price.text = H.item_d_price
-                                item_detail_image.adapter =
-                                    ItemSliderAdapter(applicationContext, H.image_slider)
-                                slide_progress.visibility = View.GONE
-                            }
+                            item_title.text = H.item_d_title
+                            item_price.text = H.item_d_price
+                            item_detail_image.adapter =
+                                ItemSliderAdapter(applicationContext, H.image_slider)
+                            slide_progress.visibility = View.GONE
+                        }
                     }
 
                     override fun onFailure(
@@ -189,7 +181,7 @@ class ItemDetailActivity : AppCompatActivity() {
     fun attributeFun(attId: String) {
 
         var pNameArray: ArrayList<String> = ArrayList() //PropertyName
-        var pTrueNameArray: ArrayList<String> = ArrayList()
+        var pTrueNameArray: ArrayList<String> = ArrayList() //PropertyName filter with configurator "true"
 
         var vidArray : ArrayList<String> = ArrayList() //Vid
         var vidTrueArray : ArrayList<String> = ArrayList()
@@ -265,7 +257,7 @@ class ItemDetailActivity : AppCompatActivity() {
 
                         // this is for pid , vid plus array
                         for(d in pidArray.indices){
-                           pvid.add(pidArray[d].plus(vidArray[d]))
+                            pvid.add(pidArray[d].plus(vidArray[d]))
                         }
                         H.arypvid = pvid
 
@@ -290,7 +282,7 @@ class ItemDetailActivity : AppCompatActivity() {
 
 
 
-
+                        H.aryPTrueName = pTrueNameArray
 
                         uniqueArray(pTrueNameArray)
 
@@ -336,44 +328,44 @@ class ItemDetailActivity : AppCompatActivity() {
 
     private fun idCheck(id : String){
 
-            doAsync {
-                var url = H.baseUrl + id
+        doAsync {
+            var url = H.baseUrl + id
 
-                uiThread {
-                    val client: AsyncHttpClient = AsyncHttpClient()
+            uiThread {
+                val client: AsyncHttpClient = AsyncHttpClient()
 
-                    client.get(url,object : JsonHttpResponseHandler(){
-                        override fun onSuccess(
-                            statusCode: Int,
-                            headers: Array<out Header>?,
-                            response: JSONObject?
-                        ) {
-                            super.onSuccess(statusCode, headers, response)
-                            var c =
-                                response!!.getJSONObject("OtapiItemFullInfo").getJSONArray("ConfiguredItems")
-                                    .length() - 1
+                client.get(url,object : JsonHttpResponseHandler(){
+                    override fun onSuccess(
+                        statusCode: Int,
+                        headers: Array<out Header>?,
+                        response: JSONObject?
+                    ) {
+                        super.onSuccess(statusCode, headers, response)
+                        var c =
+                            response!!.getJSONObject("OtapiItemFullInfo").getJSONArray("ConfiguredItems")
+                                .length() - 1
 
-                            for (i in 0..c) {
+                        for (i in 0..c) {
 
-                                var confItems =
-                                    response.getJSONObject("OtapiItemFullInfo")
-                                        .getJSONArray("ConfiguredItems").getJSONObject(i)
-                                        .getString("Configurators")
-
-                                var id = response.getJSONObject("OtapiItemFullInfo")
+                            var confItems =
+                                response.getJSONObject("OtapiItemFullInfo")
                                     .getJSONArray("ConfiguredItems").getJSONObject(i)
-                                    .getString("Id")
+                                    .getString("Configurators")
 
-                                idArray.add(id)
+                            var id = response.getJSONObject("OtapiItemFullInfo")
+                                .getJSONArray("ConfiguredItems").getJSONObject(i)
+                                .getString("Id")
 
-                                items = Gson().fromJson(
-                                    confItems.toString(),
-                                    Array<PVIdModel>::class.java
-                                ).toList()
-                            }
+                            idArray.add(id)
+
+                            items = Gson().fromJson(
+                                confItems.toString(),
+                                Array<PVIdModel>::class.java
+                            ).toList()
                         }
-                    })
-                }
+                    }
+                })
             }
+        }
     }
 }
