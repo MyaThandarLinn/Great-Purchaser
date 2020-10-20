@@ -1,7 +1,6 @@
 package com.example.gratepurchaser.libby
 
 import com.example.gratepurchaser.model.AttributesModel
-import java.util.*
 import kotlin.collections.ArrayList
 
 class H {

@@ -1,10 +1,8 @@
 package com.example.gratepurchaser.activity
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,8 +21,6 @@ import com.squareup.picasso.Picasso
 import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.activity_custom_dialog_fragment.view.*
 import kotlinx.android.synthetic.main.album_detail_activity.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 import org.json.JSONObject
 
 class ItemDetailActivity : AppCompatActivity() {
@@ -70,115 +66,117 @@ class ItemDetailActivity : AppCompatActivity() {
     private fun onDataChange() {
         slide_progress.visibility = View.VISIBLE
 
-        doAsync {
-            var searchId = search_url.text
+        var searchId = search_url.text
+        var sUrl = H.baseURL+searchId+H.tailURL
 
-            var sUrl = H.baseURL+searchId+H.tailURL
+        val client = AsyncHttpClient()
+        client.get(sUrl,object : JsonHttpResponseHandler(){
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                response: JSONObject?
+            ) {
+                super.onSuccess(statusCode, headers, response)
+                var cnt = response!!.getJSONObject("Result").getJSONObject("Items").getJSONArray("Content").length()-1
 
-            uiThread {
-                val client: AsyncHttpClient = AsyncHttpClient()
-                client.get(sUrl,object : JsonHttpResponseHandler(){
-                    override fun onSuccess(
-                        statusCode: Int,
-                        headers: Array<out Header>?,
-                        response: JSONObject?
-                    ) {
-                        super.onSuccess(statusCode, headers, response)
-
-                        var cnt = response!!.getJSONObject("Result").getJSONObject("Items").getJSONArray("Content").length()-1
-
-                        for (j in 0..cnt){
-                            var sResponseId = (response.getJSONObject("Result").getJSONObject("Items").getJSONArray("Content").getJSONObject(j).getString("Id"))
-                            H.searchId = sResponseId
-                        }
-                        asyncFun(H.searchId.toString())
-                        attributeFun(H.searchId.toString())
-                    }
-                })
+                for (j in 0..cnt){
+                    var sResponseId = (response.getJSONObject("Result").getJSONObject("Items").getJSONArray("Content").getJSONObject(j).getString("Id"))
+                    H.searchId = sResponseId
+                }
+                asyncFun(H.searchId.toString())
+                attributeFun(H.searchId.toString())
             }
-        }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                throwable: Throwable?,
+                errorResponse: JSONObject?
+            ) {
+                super.onFailure(statusCode, headers, throwable, errorResponse)
+                Log.d("hello","onDataChange error : $errorResponse")
+            }
+        })
     }
 
     fun asyncFun(id: String) {
+        var imageArray: ArrayList<String> = ArrayList()
+        var url = H.baseUrl + id
 
-        doAsync {
-            var imageArray: ArrayList<String> = ArrayList()
-            var url = H.baseUrl + id
+        val client = AsyncHttpClient()
+        client.get(url,object : JsonHttpResponseHandler(){
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                response: JSONObject?
+            ) {
+                super.onSuccess(statusCode, headers, response)
+                Log.d("hello", "-- on Success --")
 
-            uiThread {
-                val client: AsyncHttpClient = AsyncHttpClient()
+                H.item_d_image =
+                    response!!.getJSONObject("OtapiItemFullInfo").get("MainPictureUrl")
+                        .toString()
 
-                client.get(url, object : JsonHttpResponseHandler() {
-                    override fun onSuccess(
-                        statusCode: Int,
-                        headers: Array<out Header>?,
-                        response: JSONObject?
-                    ) {
-                        super.onSuccess(statusCode, headers, response)
-                        Log.d("hello", "-- on Success --")
+                H.item_d_title =
+                    response.getJSONObject("OtapiItemFullInfo").get("Title").toString()
 
-                        H.item_d_image =
-                            response!!.getJSONObject("OtapiItemFullInfo").get("MainPictureUrl")
-                                .toString()
+                H.item_d_price =
+                    response.getJSONObject("OtapiItemFullInfo").getJSONObject("Price")
+                        .get("OriginalPrice").toString()
 
-                        H.item_d_title =
-                            response.getJSONObject("OtapiItemFullInfo").get("Title").toString()
+                var count =
+                    response.getJSONObject("OtapiItemFullInfo").getJSONArray("Pictures")
+                        .length() - 1
 
-                        H.item_d_price =
-                            response.getJSONObject("OtapiItemFullInfo").getJSONObject("Price")
-                                .get("OriginalPrice").toString()
+                //for image slider
+                for (i in 0..count) {
+                    imageArray.add(
+                        i,
+                        (response.getJSONObject("OtapiItemFullInfo")
+                            .getJSONArray("Pictures").getJSONObject(i)
+                            .getJSONObject("Medium").getString("Url"))
+                    )
+                }
 
-                        var count =
-                            response.getJSONObject("OtapiItemFullInfo").getJSONArray("Pictures")
-                                .length() - 1
+                if (H.image_slider.isEmpty()) {
+                    H.image_slider = imageArray
 
-                        //for image slider
-                        for (i in 0..count) {
-                            imageArray.add(
-                                i,
-                                (response.getJSONObject("OtapiItemFullInfo")
-                                    .getJSONArray("Pictures").getJSONObject(i)
-                                    .getJSONObject("Medium").getString("Url"))
-                            )
-                        }
+                    item_title.text = H.item_d_title
+                    item_price.text = H.item_d_price
+                    item_detail_image.adapter =
+                        ItemSliderAdapter(applicationContext, H.image_slider)
+                    slide_progress.visibility = View.GONE
+                }
 
-                        if (H.image_slider.isEmpty()) {
-                            H.image_slider = imageArray
+                else {
+                    H.image_slider.clear()
+                    H.image_slider = imageArray
 
-                            item_title.text = H.item_d_title
-                            item_price.text = H.item_d_price
-                            item_detail_image.adapter =
-                                ItemSliderAdapter(applicationContext, H.image_slider)
-                            slide_progress.visibility = View.GONE
-                        }
-
-                        else {
-                            H.image_slider.clear()
-                            H.image_slider = imageArray
-
-                            item_title.text = H.item_d_title
-                            item_price.text = H.item_d_price
-                            item_detail_image.adapter =
-                                ItemSliderAdapter(applicationContext, H.image_slider)
-                            slide_progress.visibility = View.GONE
-                        }
-                    }
-
-                    override fun onFailure(
-                        statusCode: Int,
-                        headers: Array<out Header>?,
-                        throwable: Throwable?,
-                        errorResponse: JSONObject?
-                    ) {
-                        super.onFailure(statusCode, headers, throwable, errorResponse)
-                        Log.d("hello", "-- ON Failure")
-                    }
-                })
+                    item_title.text = H.item_d_title
+                    item_price.text = H.item_d_price
+                    item_detail_image.adapter =
+                        ItemSliderAdapter(applicationContext, H.image_slider)
+                    slide_progress.visibility = View.GONE
+                }
             }
-        }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                throwable: Throwable?,
+                errorResponse: JSONObject?
+            ) {
+                super.onFailure(statusCode, headers, throwable, errorResponse)
+                Log.d("hello","asyncFun error : $errorResponse")
+            }
+        })
     }
 
     fun attributeFun(attId: String) {
+        var attUrl = H.baseUrl + attId
+
+        var num = 0 //to add property name in array where configure is true
+        var pCount = 0 //for all property name , configure is true
 
         var pNameArray: ArrayList<String> = ArrayList() //PropertyName
         var pTrueNameArray: ArrayList<String> = ArrayList() //PropertyName filter with configurator "true"
@@ -190,125 +188,107 @@ class ItemDetailActivity : AppCompatActivity() {
         var pidTrueArray : ArrayList<String> = ArrayList()
         var pvid : ArrayList<String> = ArrayList()
 
-        doAsync {
+        val client = AsyncHttpClient()
+        client.get(attUrl,object : JsonHttpResponseHandler(){
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                response: JSONObject?
+            ) {
+                super.onSuccess(statusCode, headers, response)
+                Log.d("hello", "-- on Success Attribute --")
 
-            var attUrl = H.baseUrl + attId
-            var num = 0 //to add property name in array where configure is true
-            var pCount = 0 //for all property name , configure is true
+                var attribute =
+                    response!!.getJSONObject("OtapiItemFullInfo").getJSONArray("Attributes")
 
-            uiThread {
-                val client: AsyncHttpClient = AsyncHttpClient()
+                H.attributeList = Gson().fromJson(
+                    attribute.toString(),
+                    Array<AttributesModel>::class.java
+                ).toList()
 
-                client.get(attUrl, object : JsonHttpResponseHandler() {
-                    @RequiresApi(Build.VERSION_CODES.N)
-                    override fun onSuccess(
-                        statusCode: Int,
-                        headers: Array<out Header>?,
-                        response: JSONObject?
-                    ) {
-                        super.onSuccess(statusCode, headers, response)
-                        Log.d("hello", "-- on Success Attribute --")
+                // for propterty name array // need
+                for (i in H.attributeList!!.indices) {
+                    pNameArray.add(
+                        i,
+                        (response.getJSONObject("OtapiItemFullInfo")
+                            .getJSONArray("Attributes").getJSONObject(i)
+                            .getString("PropertyName"))
+                    )
 
-                        var attribute =
-                            response!!.getJSONObject("OtapiItemFullInfo").getJSONArray("Attributes")
+                    // get value for vid
+                    vidArray.add(i,
+                        (response.getJSONObject("OtapiItemFullInfo")
+                            .getJSONArray("Attributes").getJSONObject(i)
+                            .getString("Vid")))
 
-                        H.attributeList = Gson().fromJson(
-                            attribute.toString(),
-                            Array<AttributesModel>::class.java
-                        ).toList()
-
-                        // for propterty name array // need
-                        for (i in H.attributeList!!.indices) {
-                            pNameArray.add(
-                                i,
-                                (response.getJSONObject("OtapiItemFullInfo")
-                                    .getJSONArray("Attributes").getJSONObject(i)
-                                    .getString("PropertyName"))
-                            )
-
-                            // get value for vid
-                            vidArray.add(i,
-                                (response.getJSONObject("OtapiItemFullInfo")
-                                    .getJSONArray("Attributes").getJSONObject(i)
-                                    .getString("Vid")))
-
-                            // get value for pid
-                            pidArray.add(i,
-                                (response.getJSONObject("OtapiItemFullInfo")
-                                    .getJSONArray("Attributes").getJSONObject(i)
-                                    .getString("Pid")))
+                    // get value for pid
+                    pidArray.add(i,
+                        (response.getJSONObject("OtapiItemFullInfo")
+                            .getJSONArray("Attributes").getJSONObject(i)
+                            .getString("Pid")))
 
 
-                            if (H.attributeList!![i].IsConfigurator == "true") {
-                                pCount++
+                    if (H.attributeList!![i].IsConfigurator == "true") {
+                        pCount++
 
-                                if (num < pCount) {
-                                    pTrueNameArray.add(num, pNameArray[i]) // for propertyName true value
-                                    vidTrueArray.add(num,vidArray[i])  //for vid true value
-                                    pidTrueArray.add(num,pidArray[i]) // for pid true value
+                        if (num < pCount) {
+                            pTrueNameArray.add(num, pNameArray[i]) // for propertyName true value
+                            vidTrueArray.add(num,vidArray[i])  //for vid true value
+                            pidTrueArray.add(num,pidArray[i]) // for pid true value
 
-                                    num++
-                                }
-                            }
+                            num++
                         }
-
-                        H.aryPid = pidArray
-                        H.aryVid = vidArray
-
-                        // this is for pid , vid plus array
-                        for(d in pidArray.indices){
-                            pvid.add(pidArray[d].plus(vidArray[d]))
-                        }
-                        H.arypvid = pvid
-
-                        //test // for group name and id
-                        var nameIdgp = pTrueNameArray.zip(pvid)
-                        H.aryNameId = nameIdgp
-
-
-
-//                        var pvId = pidArray.zip(vidArray)
-//                        H.aryPVid = pvId
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        H.aryPTrueName = pTrueNameArray
-
-                        uniqueArray(pTrueNameArray)
-
-                        val attributelist = H.attributeList!!.filter { s-> s.IsConfigurator == "true" }
-                        val gpby = attributelist.groupBy { it.PropertyName }.values
-
-                        H.arrayAttlist = attributelist
-                        H.arrayGpby = gpby
-
-                        var value : ArrayList<String> = ArrayList()
-                        for(a in attributelist.indices){
-                            value.add(attributelist[a].Value)
-                        }
-
-                        // need
-                        val valueZip = pTrueNameArray.zip(value)
-                        val valueGp = valueZip.groupBy ( {it.first},{it.second} ).toList()
-                        H.aryValue = valueGp
-
-                        val recyAdapter = CustomMainAdapter(applicationContext, H.arrayPtrueName)
-                        main_recycler.adapter = recyAdapter
-                        main_recycler.layoutManager = GridLayoutManager(applicationContext,1, LinearLayoutManager.VERTICAL,false)
                     }
-                })
+                }
+
+                H.aryPid = pidArray
+                H.aryVid = vidArray
+
+                // this is for pid , vid plus array
+                for(d in pidArray.indices){
+                    pvid.add(pidArray[d].plus(vidArray[d]))
+                }
+                H.arypvid = pvid
+
+                //test // for group name and id
+                var nameIdgp = pTrueNameArray.zip(pvid)
+                H.aryNameId = nameIdgp
+
+                H.aryPTrueName = pTrueNameArray
+
+                uniqueArray(pTrueNameArray)
+
+                val attributeList = H.attributeList!!.filter { s-> s.IsConfigurator == "true" }
+                val gpBy = attributeList.groupBy { it.PropertyName }.values
+
+                H.arrayAttlist = attributeList
+                H.arrayGpby = gpBy
+
+                var value : ArrayList<String> = ArrayList()
+                for(a in attributeList.indices){
+                    value.add(attributeList[a].Value)
+                }
+
+                // need
+                val valueZip = pTrueNameArray.zip(value)
+                val valueGp = valueZip.groupBy ( {it.first},{it.second} ).toList()
+                H.aryValue = valueGp
+
+                val recyAdapter = CustomMainAdapter(applicationContext, H.arrayPtrueName)
+                main_recycler.adapter = recyAdapter
+                main_recycler.layoutManager = GridLayoutManager(applicationContext,1, LinearLayoutManager.VERTICAL,false)
             }
-        }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                throwable: Throwable?,
+                errorResponse: JSONObject?
+            ) {
+                super.onFailure(statusCode, headers, throwable, errorResponse)
+                Log.d("hello","attributeFun error : $errorResponse")
+            }
+        })
     }
 
     // for unique arry, sometime array index have one more time like {A, A, B, C, C, D, E}, so i wanna get {A,B,C,D,E}, use following
@@ -322,50 +302,55 @@ class ItemDetailActivity : AppCompatActivity() {
                 uniquePinyinArrayList.add(currentPinyin)
             }
         }
-
         H.arrayPtrueName = uniquePinyinArrayList
     }
 
+    // intent to use pid , vid check and get back id
     private fun idCheck(id : String){
 
-        doAsync {
-            var url = H.baseUrl + id
+        val client = AsyncHttpClient()
+        var url = H.baseUrl + id
 
-            uiThread {
-                val client: AsyncHttpClient = AsyncHttpClient()
+        client.get(url, object : JsonHttpResponseHandler(){
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                response: JSONObject?
+            ) {
+                super.onSuccess(statusCode, headers, response)
+                var c =
+                    response!!.getJSONObject("OtapiItemFullInfo").getJSONArray("ConfiguredItems")
+                        .length() - 1
 
-                client.get(url,object : JsonHttpResponseHandler(){
-                    override fun onSuccess(
-                        statusCode: Int,
-                        headers: Array<out Header>?,
-                        response: JSONObject?
-                    ) {
-                        super.onSuccess(statusCode, headers, response)
-                        var c =
-                            response!!.getJSONObject("OtapiItemFullInfo").getJSONArray("ConfiguredItems")
-                                .length() - 1
+                for (i in 0..c) {
 
-                        for (i in 0..c) {
+                    var confItems =
+                        response.getJSONObject("OtapiItemFullInfo")
+                            .getJSONArray("ConfiguredItems").getJSONObject(i)
+                            .getString("Configurators")
 
-                            var confItems =
-                                response.getJSONObject("OtapiItemFullInfo")
-                                    .getJSONArray("ConfiguredItems").getJSONObject(i)
-                                    .getString("Configurators")
+                    var id = response.getJSONObject("OtapiItemFullInfo")
+                        .getJSONArray("ConfiguredItems").getJSONObject(i)
+                        .getString("Id")
 
-                            var id = response.getJSONObject("OtapiItemFullInfo")
-                                .getJSONArray("ConfiguredItems").getJSONObject(i)
-                                .getString("Id")
+                    idArray.add(id)
 
-                            idArray.add(id)
-
-                            items = Gson().fromJson(
-                                confItems.toString(),
-                                Array<PVIdModel>::class.java
-                            ).toList()
-                        }
-                    }
-                })
+                    items = Gson().fromJson(
+                        confItems.toString(),
+                        Array<PVIdModel>::class.java
+                    ).toList()
+                }
             }
-        }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                throwable: Throwable?,
+                errorResponse: JSONObject?
+            ) {
+                super.onFailure(statusCode, headers, throwable, errorResponse)
+                Log.d("hello","async : $errorResponse")
+            }
+        })
     }
 }

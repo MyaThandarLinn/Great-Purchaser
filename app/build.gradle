@@ -69,4 +69,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:17.0.2'
     implementation "androidx.viewpager:viewpager:1.0.0"
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    //async http client
+    implementation 'com.loopj.android:android-async-http:1.4.9'
 }
