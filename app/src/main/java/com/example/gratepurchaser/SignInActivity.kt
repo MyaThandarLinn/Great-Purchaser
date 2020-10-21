@@ -41,12 +41,14 @@ class SignInActivity : AppCompatActivity() {
         go_to_home.isEnabled = true
 
         go_to_home.setOnClickListener {
+
             sign_in_progress.visibility = View.VISIBLE
+            Log.d("hello","welcome")
 
             if(isCheck()){
+                startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
                 sign_in_progress.visibility = View.GONE
                 go_to_home.isEnabled = false
-                startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
 
 //                    db.collection("users").whereEqualTo("phone",loginPhone).whereEqualTo("password",loginPass)
 //                        .get().addOnSuccessListener{
@@ -55,7 +57,7 @@ class SignInActivity : AppCompatActivity() {
 //                                startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
 //                            }
 //                            else {
-//                                toast("ldkjlkj")
+//                                toast("try again!")
 //                                go_to_home.isEnabled = true
 //                            }
 //                        }
@@ -64,6 +66,7 @@ class SignInActivity : AppCompatActivity() {
                 toast("No Connection !")
                 sign_in_progress.visibility = View.GONE
             }
+
         }
     }
 

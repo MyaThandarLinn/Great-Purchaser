@@ -12,6 +12,7 @@ import com.example.gratepurchaser.adapter.CustomMainAdapter
 import com.example.gratepurchaser.adapter.ItemSliderAdapter
 import com.example.gratepurchaser.libby.H
 import com.example.gratepurchaser.model.AttributesModel
+import com.example.gratepurchaser.model.HistoryModel
 import com.example.gratepurchaser.model.PVIdModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
@@ -32,10 +33,9 @@ class ItemDetailActivity : AppCompatActivity() {
         setContentView(R.layout.album_detail_activity)
         setSupportActionBar(toolbar)
 
-        asyncFun("623691062113")
-        attributeFun("623691062113")
-        idCheck("623691062113")
-        // 587882128315, 556829583297, 521658905219, 566279369923 // 623691062113 //616403057490
+        asyncFun("623691062113")  //for item image slide at ViewPager
+        attributeFun("623691062113") // for attribute of item to mention items' spec
+        idCheck("623691062113") // to check pid, vid from detail of each spec and get id back
 
         item_detail_cardView.setOnClickListener {
             //this is for bottom sheet dialog
@@ -174,18 +174,14 @@ class ItemDetailActivity : AppCompatActivity() {
 
     fun attributeFun(attId: String) {
         var attUrl = H.baseUrl + attId
-
         var num = 0 //to add property name in array where configure is true
         var pCount = 0 //for all property name , configure is true
-
         var pNameArray: ArrayList<String> = ArrayList() //PropertyName
         var pTrueNameArray: ArrayList<String> = ArrayList() //PropertyName filter with configurator "true"
-
         var vidArray : ArrayList<String> = ArrayList() //Vid
-        var vidTrueArray : ArrayList<String> = ArrayList()
-
+        var vidTrueArray : ArrayList<String> = ArrayList() //Vid filter with configurator "true"
         var pidArray : ArrayList<String> = ArrayList() //Pid
-        var pidTrueArray : ArrayList<String> = ArrayList()
+        var pidTrueArray : ArrayList<String> = ArrayList() //Pid filter with configurator "true"
         var pvid : ArrayList<String> = ArrayList()
 
         val client = AsyncHttpClient()
@@ -196,8 +192,6 @@ class ItemDetailActivity : AppCompatActivity() {
                 response: JSONObject?
             ) {
                 super.onSuccess(statusCode, headers, response)
-                Log.d("hello", "-- on Success Attribute --")
-
                 var attribute =
                     response!!.getJSONObject("OtapiItemFullInfo").getJSONArray("Attributes")
 
@@ -206,7 +200,7 @@ class ItemDetailActivity : AppCompatActivity() {
                     Array<AttributesModel>::class.java
                 ).toList()
 
-                // for propterty name array // need
+                // for property name array // need
                 for (i in H.attributeList!!.indices) {
                     pNameArray.add(
                         i,
@@ -250,12 +244,7 @@ class ItemDetailActivity : AppCompatActivity() {
                 }
                 H.arypvid = pvid
 
-                //test // for group name and id
-                var nameIdgp = pTrueNameArray.zip(pvid)
-                H.aryNameId = nameIdgp
-
                 H.aryPTrueName = pTrueNameArray
-
                 uniqueArray(pTrueNameArray)
 
                 val attributeList = H.attributeList!!.filter { s-> s.IsConfigurator == "true" }
@@ -274,6 +263,10 @@ class ItemDetailActivity : AppCompatActivity() {
                 val valueGp = valueZip.groupBy ( {it.first},{it.second} ).toList()
                 H.aryValue = valueGp
 
+                //test -> group with value and id
+                val gpOfvalueId = value.zip(pvid)
+                H.aryGpOfValueId = gpOfvalueId
+
                 val recyAdapter = CustomMainAdapter(applicationContext, H.arrayPtrueName)
                 main_recycler.adapter = recyAdapter
                 main_recycler.layoutManager = GridLayoutManager(applicationContext,1, LinearLayoutManager.VERTICAL,false)
@@ -286,12 +279,12 @@ class ItemDetailActivity : AppCompatActivity() {
                 errorResponse: JSONObject?
             ) {
                 super.onFailure(statusCode, headers, throwable, errorResponse)
-                Log.d("hello","attributeFun error : $errorResponse")
+                Log.e("error: ",errorResponse.toString())
             }
         })
     }
 
-    // for unique arry, sometime array index have one more time like {A, A, B, C, C, D, E}, so i wanna get {A,B,C,D,E}, use following
+    // for unique array, sometime array index have one more time like {A, A, B, C, C, D, E}, so i wanna get {A,B,C,D,E}, use following
     private fun uniqueArray(pinyinArrayList: ArrayList<String>) {
         val uniquePinyinArrayList = ArrayList<String>()
         for(currentPinyin in pinyinArrayList){
@@ -307,7 +300,6 @@ class ItemDetailActivity : AppCompatActivity() {
 
     // intent to use pid , vid check and get back id
     private fun idCheck(id : String){
-
         val client = AsyncHttpClient()
         var url = H.baseUrl + id
 
@@ -349,7 +341,7 @@ class ItemDetailActivity : AppCompatActivity() {
                 errorResponse: JSONObject?
             ) {
                 super.onFailure(statusCode, headers, throwable, errorResponse)
-                Log.d("hello","async : $errorResponse")
+                Log.e("error : ",errorResponse.toString())
             }
         })
     }

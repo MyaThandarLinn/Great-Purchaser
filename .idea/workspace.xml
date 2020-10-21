@@ -6,8 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="hello" />
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
@@ -23,14 +22,20 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/PC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/PC.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/SignInActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/SignInActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/activity/ItemDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/activity/ItemDetailActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/CustomDetailAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/CustomDetailAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/CustomMainAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/CustomMainAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/DetailAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/adapter/DetailAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/libby/H.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gratepurchaser/libby/H.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_custom_dialog_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_custom_dialog_fragment.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,8 +88,8 @@
         <option value="valueResourceFile" />
         <option value="layoutResourceFile" />
         <option value="resourceFile" />
-        <option value="Kotlin Class" />
         <option value="Kotlin File" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -104,7 +109,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="C:/Android Studio Project/CheckInternetAndroidExample-master" />
+    <property name="last_opened_file_path" value="C:/Android Studio Project/RecyclerView-kotlin-5bb9a9ce50ab30a31fd12925bd7ac05ee3797caa" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -147,6 +152,21 @@
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.example.gratepurchaser.model in app" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.gratepurchaser.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.gratepurchaser.model" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
@@ -275,6 +295,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Android JUnit.com.example.gratepurchaser.model in app" />
         <item itemvalue="Android App.ItemDetailActivity" />
         <item itemvalue="Gradle.GratePurchaser [signingReport]" />
       </list>
@@ -298,10 +319,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="239" y="120" key="#PSD/0.0.1920.1040@0.0.1920.1040" timestamp="1600744819389" />
-    <state x="658" y="99" key="#com.intellij.ide.util.MemberChooser" timestamp="1602218561268">
+    <state x="658" y="99" key="#com.intellij.ide.util.MemberChooser" timestamp="1603178830182">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="658" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1602218561268" />
+    <state x="658" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1603178830182" />
     <state x="273" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600418468147">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -314,30 +335,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="258" key="AndroidCreateResourceFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600417155957" />
-    <state x="640" y="158" key="FileChooserDialogImpl" timestamp="1602823887721">
+    <state x="640" y="158" key="FileChooserDialogImpl" timestamp="1603164057089">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="640" y="158" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602823887721" />
+    <state x="640" y="158" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1603164057089" />
     <state x="761" y="363" key="Github.ShareDialog" timestamp="1601095149191">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="761" y="363" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601095149191" />
-    <state width="1851" height="214" key="GridCell.Tab.0.bottom" timestamp="1602841196249">
+    <state width="1851" height="526" key="GridCell.Tab.0.bottom" timestamp="1603177216292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1851" height="214" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602841196249" />
-    <state width="1851" height="214" key="GridCell.Tab.0.center" timestamp="1602841196249">
+    <state width="1851" height="526" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603177216292" />
+    <state width="1851" height="526" key="GridCell.Tab.0.center" timestamp="1603177216292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1851" height="214" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602841196248" />
-    <state width="1851" height="214" key="GridCell.Tab.0.left" timestamp="1602841196247">
+    <state width="1851" height="526" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603177216292" />
+    <state width="1851" height="526" key="GridCell.Tab.0.left" timestamp="1603177216292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1851" height="214" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602841196247" />
-    <state width="1851" height="214" key="GridCell.Tab.0.right" timestamp="1602841196249">
+    <state width="1851" height="526" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603177216292" />
+    <state width="1851" height="526" key="GridCell.Tab.0.right" timestamp="1603177216292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1851" height="214" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602841196249" />
+    <state width="1851" height="526" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603177216292" />
     <state x="221" y="0" key="SettingsEditor" timestamp="1602211227408">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -346,10 +367,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602213444003" />
-    <state x="506" y="258" key="com.intellij.ide.util.TipDialog" timestamp="1602820155150">
+    <state x="506" y="258" key="com.intellij.ide.util.TipDialog" timestamp="1603161344724">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="506" y="258" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602820155150" />
+    <state x="506" y="258" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603161344724" />
     <state x="420" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600248274869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -370,5 +391,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="453" y="-2" width="1009" height="1470" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602841504148" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/GratePurchaser$com_example_gratepurchaser_model_in_app.ic" NAME="com.example.gratepurchaser.model in app Coverage Results" MODIFIED="1602906743358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.gratepurchaser.model.*</FILTER>
+    </SUITE>
   </component>
 </project>

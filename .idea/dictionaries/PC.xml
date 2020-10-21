@@ -2,7 +2,9 @@
   <dictionary name="PC">
     <words>
       <w>firestore</w>
+      <w>ofvalue</w>
       <w>otapi</w>
+      <w>pvid</w>
     </words>
   </dictionary>
 </component>

@@ -41,15 +41,14 @@ class H {
 
         var keyValue : String = ""
 
-
         var aryPid : ArrayList<String> = ArrayList()  // for Pid with conf "true"
         var aryVid : ArrayList<String> = ArrayList() // for Vid with conf "true"
         var arypvid : ArrayList<String> = ArrayList()
         var chkValue : List<String> = listOf()
 
-        //for group of name and id [(body color, 16272077996777722), (body color, 16272077996777723),
-        var aryNameId : List<Pair<String,String>>? = null
 
         var aryPTrueName : ArrayList<String> = ArrayList()
+        var aryGpOfValueId : List<Pair<String,String>>? = null
+
     }
 }
