@@ -49,6 +49,10 @@ class ItemDetailActivity : AppCompatActivity() {
             view.txtPrice.text = "${H.item_d_price} Ks"
             Picasso.get().load(H.image_slider[0]).into(view.img)
 
+            view.txt_itemSelect.text = intent?.getStringExtra("data")
+            Log.d("hello","tt-> hello TT")
+
+
             dialog.setContentView(view)
             dialog.show()
         }
@@ -331,6 +335,10 @@ class ItemDetailActivity : AppCompatActivity() {
                         confItems.toString(),
                         Array<PVIdModel>::class.java
                     ).toList()
+                }
+                var itemId : ArrayList<String> = ArrayList()
+                for (i in items.indices){
+                    itemId.add(items[i].Pid + items[i].Vid)
                 }
             }
 
