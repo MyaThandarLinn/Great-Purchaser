@@ -72,4 +72,7 @@ dependencies {
 
     //async http client
     implementation 'com.loopj.android:android-async-http:1.4.9'
+
+    //recyclerView multiple selection
+    implementation 'com.android.support:recyclerview-selection:28.0.0'
 }

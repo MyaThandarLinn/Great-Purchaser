@@ -2,10 +2,14 @@ package com.example.gratepurchaser.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gratepurchaser.R
 import com.example.gratepurchaser.activity.ItemDetailActivity
@@ -19,6 +23,7 @@ class DetailAdapter(
     private val str : String
 )
     : RecyclerView.Adapter<DetailAdapter.ViewHolder>() {
+
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,7 +40,7 @@ class DetailAdapter(
         holder.itemView.size_detail_list.text = H.resultList[position]
 
         holder.itemView.setOnClickListener {
-            cellClickListener.onCellClickListener(data, id, key)
+            cellClickListener.onCellClickListener(data,id,key)
         }
     }
 }

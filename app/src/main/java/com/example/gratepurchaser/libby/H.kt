@@ -54,5 +54,11 @@ class H {
         var aryTestName : ArrayList<String> = ArrayList()
         var text : String? = "Please select specs" //for text change when i click a cell of recycler
 
+        //
+        val first  = ArrayList<String>()
+        var uFirst = ArrayList<String>()
+        val uSecond = ArrayList<String>()
+
+
     }
 }

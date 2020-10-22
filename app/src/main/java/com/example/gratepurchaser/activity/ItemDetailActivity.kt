@@ -1,9 +1,16 @@
 package com.example.gratepurchaser.activity
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.selection.SelectionPredicates
+import androidx.recyclerview.selection.SelectionTracker
+import androidx.recyclerview.selection.StableIdKeyProvider
+import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gratepurchaser.R
@@ -27,6 +34,8 @@ import org.json.JSONObject
 class ItemDetailActivity : AppCompatActivity() {
     var items : List<PVIdModel> = listOf()
     var idArray : ArrayList<String> = ArrayList()
+    private var tracker: SelectionTracker<Long>? = null  //tracker
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +51,7 @@ class ItemDetailActivity : AppCompatActivity() {
             val dialog = BottomSheetDialog(this)
             val view = layoutInflater.inflate(R.layout.activity_custom_dialog_fragment, null)
 
+            // adapter part
             val recyAdapter = CustomDetailAdapter(applicationContext, H.arrayPtrueName)
             view.detail_main_recycler.adapter = recyAdapter
             view.detail_main_recycler.layoutManager = GridLayoutManager(applicationContext,1, LinearLayoutManager.VERTICAL,false)
@@ -49,9 +59,14 @@ class ItemDetailActivity : AppCompatActivity() {
             view.txtPrice.text = "${H.item_d_price} Ks"
             Picasso.get().load(H.image_slider[0]).into(view.img)
 
-            view.txt_itemSelect.text = intent?.getStringExtra("data")
-            Log.d("hello","tt-> hello TT")
+            view.txt_itemSelect.text = intent?.getStringExtra("data") // get extra not working
 
+            if (H.uFirst.isNotEmpty()){
+                H.uFirst.clear()
+            }
+            if (H.uSecond.isNotEmpty()){
+                H.uSecond.clear()
+            }
 
             dialog.setContentView(view)
             dialog.show()
@@ -115,6 +130,10 @@ class ItemDetailActivity : AppCompatActivity() {
                 response: JSONObject?
             ) {
                 super.onSuccess(statusCode, headers, response)
+
+                H.uFirst.clear()
+                H.uSecond.clear()
+
                 Log.d("hello", "-- on Success --")
 
                 H.item_d_image =
@@ -353,4 +372,7 @@ class ItemDetailActivity : AppCompatActivity() {
             }
         })
     }
+
+
+
 }
